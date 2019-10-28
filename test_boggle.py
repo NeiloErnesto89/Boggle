@@ -1,5 +1,6 @@
 import unittest 
 import boggle
+from string import ascii_uppercase 
 
 class test_boggle(unittest.TestCase):
     
@@ -29,3 +30,12 @@ class test_boggle(unittest.TestCase):
         self.assertIn((1, 0), grid)
         self.assertIn((1, 1), grid)
         self.assertNotIn((2, 2), grid) # not in the grid 
+        
+    def test_grid_is_filled_with_letters(self):
+        """
+        test to ensure to that each coordinates on the grid
+        contains letters 
+        """
+        grid = boggle.make_grid(2 ,3)
+        for letter in grid.values():
+            self.assertIn(letter, ascii_uppercase)
